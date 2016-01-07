@@ -1,5 +1,5 @@
 library(RBMRB)
-library(reshape)
+library(reshape2)
 library(ggplot2)
 library(ggvis)
 library(shiny)
