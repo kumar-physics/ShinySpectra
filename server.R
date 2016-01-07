@@ -1,4 +1,4 @@
-library(BMRB)
+library(RBMRB)
 library(reshape)
 library(ggplot2)
 library(ggvis)
