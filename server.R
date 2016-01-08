@@ -45,7 +45,7 @@ shinyServer(function(input, output) {
     if (input$line){
     bid %>%
       ggvis(~H,~N,stroke=strokval) %>%
-      layer_points(stroke=shapeval,fill=shapeval)%>%
+      layer_points(stroke=shapeval,fill=shapeval,key := ~key)%>%
       #layer_text(stroke=shapeval,text:=~aa,key := ~key,fontSize := 15, fontSize.hover := 30)%>%
       layer_lines() %>%
       hide_legend("stroke")%>%
