@@ -47,6 +47,9 @@ fetchBMRB<-function(BMRBidlist){
 #'hsqc<-N15HSQC(df)
 
 N15HSQC<-function(csdf){
+  if (is.na(csdf)){
+    outdat<-NA
+  }else{
   shiftH<-subset(csdf,Atom_ID=="H")
   names(shiftH)[names(shiftH)=="Chemical_shift"]<-"H"
   shiftN<-subset(csdf,Atom_ID=="N")
@@ -55,5 +58,6 @@ N15HSQC<-function(csdf){
   outdat<-shiftHN[,c("BMRB_ID","Comp_index_ID","Assigned_chem_shift_list_ID","Comp_ID.x","Comp_ID.y","H","N")]
   names(outdat)[names(outdat)=="Comp_ID.x"]<-"Comp_ID_H"
   names(outdat)[names(outdat)=="Comp_ID.y"]<-"Comp_ID_N"
+  }
   return(outdat)
 }

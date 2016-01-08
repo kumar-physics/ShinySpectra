@@ -7,10 +7,17 @@ shinyServer(function(input, output) {
 
   # You can access the value of the widget with input$text, e.g.
   #output$value <- renderPrint({ input$bmrbId })
+  #output$status1<-eventReactive(input$goButton,renderText("Loading"))
   bid<-reactive({
     input$goButton
     bbid<-isolate(input$bmrbId)
     hsqc<-N15HSQC(fetchBMRB(bbid))
+    if (is.na(hsqc)){
+      output$status1<-renderText("Error: Invalid BMRB ID")
+    }else{
+      output$status1<-renderText("")
+    }
+    validate(need(!is.na(hsqc),"Invalid Input"))
     m<-as.data.frame(hsqc)
     m$key=NA
     m$key=sprintf("%d-%d-%d",m$BMRB_ID,m$Comp_index_ID,m$Assigned_chem_shift_list_ID)
