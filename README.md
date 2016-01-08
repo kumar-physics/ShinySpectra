@@ -7,3 +7,4 @@ If you have the following packages/libraries installed in your system, then you 
 3. httr
 4. reshape2
 
+runGitHun("ShinySpectra","uwbmrb")
