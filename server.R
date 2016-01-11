@@ -49,7 +49,8 @@ shinyServer(function(input, output,session) {
            "<br> Res Id:", bid$Comp_index_ID,
            "<br> Res Type :",bid$Comp_ID_H,
            "<br> H :",bid$H,
-           "<br> N :",bid$N
+           "<br> N :",bid$N,
+           "<br> list ID :",bid$Assigned_chem_shift_list_ID
     )
   }
   vis <- reactive({
@@ -57,6 +58,7 @@ shinyServer(function(input, output,session) {
     yvar <- prop("y", as.symbol("N"))
     shapeval <- as.symbol("BMRB_ID")
     strokval <-  as.symbol("Comp_index_ID")
+    structval <- as.symbol("Assigned_chem_shift_list_ID")
     if (input$line){
     bid %>%
       ggvis(~H,~N,stroke=strokval) %>%
