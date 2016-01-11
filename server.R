@@ -3,7 +3,7 @@ library(ggplot2)
 library(ggvis)
 library(shiny)
 
-shinyServer(function(input, output) {
+shinyServer(function(input, output,session) {
 
   # You can access the value of the widget with input$text, e.g.
   #output$value <- renderPrint({ input$bmrbId })
@@ -27,6 +27,15 @@ shinyServer(function(input, output) {
     m$aa<-xx3to1(m$Comp_ID_H)
     m
   })
+
+
+
+  observe({
+    m2=bid()
+    updateSliderInput(session, "x_domain", min= min(m2$H), max=max(m2$H), value=range(m2$H))
+    updateSliderInput(session, "y_domain", min= min(m2$N), max=max(m2$N), value=range(m2$N))
+  })
+
 
   bid_tooltip <- function(x) {
     if (is.null(x)) return(NULL)
@@ -59,8 +68,10 @@ shinyServer(function(input, output) {
       #ggvis(x = xvar, y = yvar) %>%
     #mark_rect() %>%
     add_tooltip(bid_tooltip, "hover") %>%
-        scale_numeric("x",reverse=T) %>%
-        scale_numeric("y",reverse=T) %>%
+        scale_numeric("x", domain = input$x_domain, nice = FALSE, clamp = TRUE,reverse=T) %>%
+        scale_numeric("y", domain = input$y_domain, nice = FALSE, clamp = TRUE,reverse=T) %>%
+        #scale_numeric("x",reverse=T) %>%
+        #scale_numeric("y",reverse=T) %>%
     set_options(width = 1200, height = 600)
     }
     else{
@@ -73,8 +84,10 @@ shinyServer(function(input, output) {
         #ggvis(x = xvar, y = yvar) %>%
         #mark_rect() %>%
         add_tooltip(bid_tooltip, "hover") %>%
-        scale_numeric("x",reverse=T) %>%
-        scale_numeric("y",reverse=T) %>%
+        scale_numeric("x", domain = input$x_domain, nice = FALSE, clamp = TRUE,reverse=T) %>%
+        scale_numeric("y", domain = input$y_domain, nice = FALSE, clamp = TRUE,reverse=T) %>%
+        #scale_numeric("x",reverse=T) %>%
+        #scale_numeric("y",reverse=T) %>%
         set_options(width = 1200, height = 600)
     }
   })

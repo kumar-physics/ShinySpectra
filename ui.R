@@ -1,6 +1,7 @@
 
 library(ggvis)
 
+
 shinyUI(fluidPage(
   br(),
   titlePanel(img(src="logo_bmrb.jpg",height=120,width=120,align="left")),
@@ -22,8 +23,13 @@ shinyUI(fluidPage(
 
   ),
   fluidRow(
-    column(6,actionButton("goButton",label=strong("Update"))),
-    column(6,checkboxInput("line",label=strong("Connet them by Comp_index_ID"),value=F))
+    column(3,actionButton("goButton",label=strong("Update"))),
+    column(3,
+      sliderInput("x_domain","H axis zoom",min=1,max=20,value=c(5,15),step=0.1)),
+    column(3,
+      sliderInput("y_domain","N axis zoom",min=1,max=20,value=c(5,15),step=0.1)
+    ),
+    column(3,checkboxInput("line",label=strong("Connet them by Comp_index_ID"),value=F))
   )
 ))
 
