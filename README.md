@@ -16,4 +16,5 @@ install.packages(c('shiny','ggvis','httr','reshape2','ggplot2'))
 Once you have all the necessary packages in your system, you may use the following commands to run the visualization
 
 library(shiny)
+
 runGitHub("ShinySpectra","uwbmrb")
