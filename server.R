@@ -20,7 +20,7 @@ shinyServer(function(input, output,session) {
     validate(need(!is.na(hsqc),"Invalid Input"))
     m<-as.data.frame(hsqc)
     m$key=NA
-    m$key=sprintf("%d-%d-%d",m$BMRB_ID,m$Comp_index_ID,m$Assigned_chem_shift_list_ID)
+    m$key=sprintf("%d-%d-%d-%d",m$BMRB_ID,m$Comp_index_ID,m$Entity_ID,m$Assigned_chem_shift_list_ID)
     m$BMRB_ID=as.character(m$BMRB_ID)
     m$Comp_index_ID=as.character(m$Comp_index_ID)
     m$aa<-NA

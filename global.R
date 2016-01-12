@@ -54,8 +54,8 @@ N15HSQC<-function(csdf){
   names(shiftH)[names(shiftH)=="Chemical_shift"]<-"H"
   shiftN<-subset(csdf,Atom_ID=="N")
   names(shiftN)[names(shiftN)=="Chemical_shift"]<-"N"
-  shiftHN<-merge(shiftH,shiftN,by=c('BMRB_ID','Comp_index_ID','Assigned_chem_shift_list_ID'))
-  outdat<-shiftHN[,c("BMRB_ID","Comp_index_ID","Assigned_chem_shift_list_ID","Comp_ID.x","Comp_ID.y","H","N")]
+  shiftHN<-merge(shiftH,shiftN,by=c('BMRB_ID','Comp_index_ID','Assigned_chem_shift_list_ID','Entity_ID'))
+  outdat<-shiftHN[,c("BMRB_ID","Comp_index_ID","Assigned_chem_shift_list_ID","Entity_ID","Comp_ID.x","Comp_ID.y","H","N")]
   names(outdat)[names(outdat)=="Comp_ID.x"]<-"Comp_ID_H"
   names(outdat)[names(outdat)=="Comp_ID.y"]<-"Comp_ID_N"
   }
