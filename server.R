@@ -12,7 +12,7 @@ shinyServer(function(input, output,session) {
     input$goButton
     bbid<-isolate(input$bmrbId)
     hsqc<-N15HSQC(fetchBMRB(bbid))
-    if (is.na(hsqc)){
+    if (all(is.na(hsqc))){
       output$status1<-renderText("Error: Invalid BMRB ID")
     }else{
       output$status1<-renderText("")

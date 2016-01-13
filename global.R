@@ -47,7 +47,7 @@ fetchBMRB<-function(BMRBidlist){
 #'hsqc<-N15HSQC(df)
 
 N15HSQC<-function(csdf){
-  if (is.na(csdf)){
+  if (all(is.na(csdf))){
     outdat<-NA
   }else{
   shiftH<-subset(csdf,Atom_ID=="H")
